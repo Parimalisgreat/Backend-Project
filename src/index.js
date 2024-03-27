@@ -8,7 +8,17 @@ dotenv.config({
 
 const app=express();
 
+const port=process.env.PORT;
+
 connectDB()
+.then(()=>{
+    app.listen(port,()=>{
+        console.log(`Server running on port: ${port}`);
+    })
+})
+.catch((error)=>{
+    console.log("Error connecting database",error);
+})
 
 
 
